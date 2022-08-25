@@ -1,0 +1,56 @@
+/* css header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    height: var(--height-header);
+    background-color: transparent;
+    z-index: 99;
+    transition: background-color .3s ease-in-out;
+
+    &>.container-fluid {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+
+        &>.logo {
+            display: inline-flex;
+
+            &>img {
+                max-height: 120px;
+            }
+        }
+
+        &>.auth {
+            display: flex;
+            align-items: center;
+
+            &>.search {
+                display: inline-flex;
+
+                &>svg {
+                    fill: $brand-color;
+                    margin-right: 2rem;
+                }
+            }
+
+            &>.log-in {
+                display: inline-block;
+                border: 1px solid $brand-color;
+                background-color: transparent;
+                color: $brand-color ;
+                padding: 10px 24px;
+                border-radius: 5px;
+                text-transform: capitalize;
+            }
+        }
+
+    }
+
+    &.active {
+        background-color: $light-color;
+    }
+}
