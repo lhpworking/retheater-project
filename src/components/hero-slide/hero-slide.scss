@@ -1,0 +1,254 @@
+@use '/src/assets/scss/core/variables' as *;
+@use '/src/assets/scss/core/mixins' as *;
+
+main {
+    &>.hero {
+        .swiper {
+            height: 100vh;
+
+            &-slide {
+                position: relative;
+                cursor: grab;
+                background-size: cover;
+                background-repeat: no-repeat;
+
+                &::before {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    left: 0%;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 1;
+                    background-color: rgba($color: $dark-color, $alpha: .6);
+                }
+
+                .movie {
+                    position: absolute;
+                    z-index: 99;
+                    width: 100%;
+                    height: 100%;
+
+                    &>.container {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        height: 100%;
+                    }
+
+                    &__content {
+                        position: relative;
+                        z-index: 2;
+                        max-width: 50%;
+
+                        &-title,
+                        &-des {
+                            opacity: 0;
+                            pointer-events: none;
+                            visibility: hidden;
+                            margin-bottom: 1.5rem;
+                            transition: opacity .3s ease-in-out;
+                            will-change: opacity;
+                        }
+
+                        &-btn {
+                            display: inline-flex;
+                            opacity: 0;
+                            pointer-events: none;
+                            visibility: hidden;
+                            transition: opacity .3s ease-in-out;
+                            will-change: opacity;
+
+
+                            .btn {
+                                &.btn-primary {
+                                    margin-left: 2rem;
+                                }
+                            }
+                        }
+
+                        &>ul {
+                            display: flex;
+                            align-items: center;
+                            margin-bottom: 1.5rem;
+                            flex-wrap: wrap;
+                            opacity: 0;
+                            pointer-events: none;
+                            visibility: hidden;
+                            transition: opacity .3s ease-in-out;
+
+                            &>li {
+                                &.vote {
+                                    display: block;
+                                    background-color: $brand-color;
+                                    padding: 4px 20px;
+                                }
+
+                                &:not(:last-child) {
+                                    margin-right: 3rem;
+                                }
+                            }
+                        }
+
+                    }
+
+                    &__thumbnail {
+                        max-width: 50%;
+                        position: relative;
+                        display: inline-flex;
+                        border-radius: 10px;
+                        cursor: pointer;
+                        transform: scale(0);
+                        opacity: 0;
+                        pointer-events: none;
+                        transition: transform .3s ease-in-out,
+                            opacity .3s ease-in-out;
+                        will-change: transform, opacity;
+                        flex-direction: column;
+
+                        &>img {
+                            position: relative;
+                            aspect-ratio: 3/4;
+                            width: 100%;
+
+                        }
+
+                        &>figcaption {
+                            display: none
+                        }
+
+
+                        &:hover {
+                            transform: scale(1.05);
+                        }
+                    }
+                }
+
+                &-active {
+                    .movie {
+                        &__content {
+
+                            &-title,
+                            &-des {
+                                opacity: 1;
+                                pointer-events: all;
+                                visibility: visible;
+                            }
+
+                            &>ul {
+                                visibility: visible;
+                                pointer-events: all;
+                                opacity: 1;
+                                transition-delay: .4s;
+                            }
+
+                            &-title {
+                                transition-delay: .2s;
+                            }
+
+                            &-des {
+                                transition-delay: .6s;
+                            }
+
+                            &-btn {
+                                opacity: 1;
+                                pointer-events: all;
+                                visibility: visible;
+                                transition-delay: .8s;
+                            }
+
+                        }
+
+                        &__thumbnail {
+                            pointer-events: visible;
+                            opacity: 1;
+                            transform: scale(1);
+                        }
+                    }
+                }
+
+            }
+
+            &-pagination {
+                &-bullet {
+                    &-active {
+                        background-color: $brand-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include xs {
+    main {
+        &>.hero {
+            .swiper {
+                &-slide {
+
+                    .movie {
+
+                        &>.container {
+                            justify-content: center;
+
+                        }
+
+                        &__content {
+                            display: none;
+
+                        }
+
+                        &__thumbnail {
+                            max-width: 80%;
+
+                            &>figcaption {
+                                display: block;
+                            }
+                        }
+
+                    }
+
+
+                }
+
+
+            }
+        }
+    }
+}
+
+// @media (max-width: 540px) {
+//     main {
+//         &>.hero {
+//             .swiper {
+//                 &-slide {
+//                     .movie {
+//                         &__thumbnail {
+//                             max-width: 50%;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+
+// }
+
+@include xxs {
+    main {
+        &>.hero {
+            .swiper {
+                height: 85vh;
+
+                &-slide {
+                    .movie {
+                        &__thumbnail {
+                            max-width: 80%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

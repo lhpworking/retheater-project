@@ -1,3 +1,6 @@
+@use '../core/mixins' as *;
+@use '../core/variables' as *;
+
 // css img, button, heading, title, input, elements, components...
 img {
     max-width: 100%;
@@ -138,4 +141,13 @@ article {
         font-size: var(--h2-fs);
         line-height: var(--h2-lh);
     }
+
+    &.--h3 {
+        font-size: var(--h3-fs);
+        line-height: var(--h3-lh);
+    }
+}
+
+.section {
+    padding-top: var(--pd-section);
 }

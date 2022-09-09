@@ -1,4 +1,7 @@
 /* css header */
+@use '/src/assets/scss/core/variables' as *;
+@use '/src/assets/scss/core/mixins' as *;
+
 header {
     position: fixed;
     top: 0;
@@ -8,7 +11,9 @@ header {
     height: var(--height-header);
     background-color: transparent;
     z-index: 99;
-    transition: background-color .3s ease-in-out;
+    transition: background-color .2s ease-in-out,
+        height .2s ease-in-out;
+    will-change: background-color, height;
 
     &>.container-fluid {
         display: flex;
@@ -21,6 +26,8 @@ header {
 
             &>img {
                 max-height: 120px;
+                transition: max-height .2s ease-in-out;
+                will-change: max-height;
             }
         }
 
@@ -51,6 +58,39 @@ header {
     }
 
     &.active {
-        background-color: $light-color;
+        height: calc(var(--height-header) - 10px);
+        background-color: rgba($color: $light-color, $alpha: 1);
+
+        &>.container-fluid {
+            &>.logo {
+                &>img {
+                    max-height: 100px;
+                }
+            }
+        }
+
     }
+}
+
+@include xs {
+    header {
+        &.active {
+            &>.container-fluid {
+                &>.logo {
+                    &>img {
+                        max-height: 80px;
+                    }
+                }
+            }
+        }
+
+        &>.container-fluid {
+            &>.logo {
+                &>img {
+                    max-height: 90px;
+                }
+            }
+        }
+    }
+
 }

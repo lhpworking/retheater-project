@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { HOME_PATH } from "../../constants/path";
+import Button from "../button/Button";
+import './header.scss';
 
 export default function Header() {
     const [scroll, setScroll] = useState(false)
@@ -12,9 +15,9 @@ export default function Header() {
     return (
         <header className={ scroll ? "active" : "" }>
             <div className="container-fluid">
-                <a href="#" className="logo">
-                    <img src="/public/logo.png" alt="logo" />
-                </a>
+                <Link to={ HOME_PATH } className="logo">
+                    <img src="/logo.png" alt="logo" />
+                </Link>
                 <div className="auth">
                     <Link to={ "" } className="search">
                         <svg
@@ -25,7 +28,11 @@ export default function Header() {
                             <path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path>
                         </svg>
                     </Link>
-                    <Link to={ "" } className="log-in">Login</Link>
+                    {/* <Link to={ "" } >
+                        <Button className="btn-outline">
+                            Login
+                        </Button>
+                    </Link> */}
                 </div>
             </div>
         </header>

@@ -1,0 +1,29 @@
+@use "/src/assets/scss/core/variables" as *;
+
+.pagination {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-top: 5rem;
+    gap: 3rem;
+
+    &>ul {
+        display: flex;
+        gap: 3rem;
+
+        &>li {
+            color: $light-color;
+            transition: color .2s ease-in-out;
+            will-change: color;
+
+            &.active {
+                color: $brand-color;
+            }
+
+            &:hover {
+                color: $brand-color;
+                cursor: pointer;
+            }
+        }
+    }
+}

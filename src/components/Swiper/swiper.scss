@@ -1,0 +1,49 @@
+@use "/src/assets/scss/core/variables" as *;
+
+.movie-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+
+    &>h2 {
+        text-transform: capitalize;
+    }
+
+    &>.navigation {
+        display: inline-flex;
+        align-items: center;
+
+
+        &>.arrow {
+            display: inherit;
+            fill: $light-color;
+            cursor: pointer;
+            transition: fill .2s ease-in-out;
+            will-change: fill;
+
+            &:hover {
+                fill: $brand-color;
+            }
+        }
+    }
+
+}
+
+.swiper {
+    &-slide {
+        cursor: grab;
+
+        &>figure {
+            &>img {
+                cursor: pointer;
+
+            }
+        }
+
+        &>iframe {
+            aspect-ratio: 16/9;
+            width: 100%;
+        }
+    }
+}
