@@ -10,9 +10,7 @@ import { categories, movieType, times, tvType } from "../constants/tmdb";
 import "./movie/movie.scss";
 
 export default function Home() {
-  const { search } = useLocation()
-  const currentPage = parseInt(new URLSearchParams(search).get('page') || "1")
-  // console.log(currentPage);
+
   return (
     <>
       <HeroSlide />
@@ -26,16 +24,6 @@ export default function Home() {
               </svg>
               nominated movie
             </h3>
-            <Link
-              to={
-                `/${categories.movie}/${times.day}?page=${currentPage}`
-              }
-            >
-              View all
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
-                <path d="M10.061 19.061 17.121 12l-7.06-7.061-2.122 2.122L12.879 12l-4.94 4.939z"></path>
-              </svg>
-            </Link>
           </div>
           <MovieList
             category={ categories.movie }
@@ -56,7 +44,7 @@ export default function Home() {
               Movie Popular
             </h3>
             <Link
-              to={ `/${categories.movie}/${movieType.popular}?page=${currentPage}` }
+              to={ `/${categories.movie}/${movieType.popular}?page=${1}` }
             >
               View all
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
@@ -82,7 +70,7 @@ export default function Home() {
               Tv Shows
             </h3>
             <Link
-              to={ `/${categories.tv}/${tvType.popular}?page=${currentPage}` }
+              to={ `/${categories.tv}/${tvType.popular}?page=${1}` }
             >
               View all
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
@@ -107,7 +95,7 @@ export default function Home() {
               Tv Shows
             </h3>
             <Link
-              to={ `/${categories.tv}/${tvType.top_rated}?page=${currentPage}` }
+              to={ `/${categories.tv}/${tvType.top_rated}?page=${1}` }
             >
               View all
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">

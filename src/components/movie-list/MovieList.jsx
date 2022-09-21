@@ -16,10 +16,13 @@ const MovieList = props => {
 
 
     useEffect(() => {
+
         const getList = async () => {
             setLoading(true)
             let response = null
             const params = { page: 1 }
+
+
 
             if (props.type !== "similar") {
                 switch (props.category) {
@@ -53,7 +56,6 @@ const MovieList = props => {
         }
         getList()
     }, [])
-    console.log(loading);
 
     return (
         <div className="card-layout">
@@ -63,26 +65,26 @@ const MovieList = props => {
                         <SkeletonImage active style={ { marginBottom: "1rem", width: 200, height: 300 } } />
                         <SkeletonInput size='small' />
                     </div>
+                }) : data && data.map((movie, i) => {
+                    return (
+                        <Link
+                            to={ generatePath(MOVIE_DETAIL_PATH, {
+                                category: categories[props.category] || movie?.media_type,
+                                slug: movie?.title || movie?.name,
+                                id: movie?.id
+                            }) }
+                            className="card" key={ i } >
+                            <figure>
+                                <img loading="lazy" src={ movieImg.w500Img(movie?.poster_path) } alt={ movie?.title || movie?.name } />
+                                <figcaption>
+                                    { movie?.title || movie?.name }
+                                </figcaption>
+                            </figure>
+                        </Link>
+                    )
                 })
-                    : data && data.map((movie, i) => {
-                        return (
-                            <Link
-                                to={ generatePath(MOVIE_DETAIL_PATH, {
-                                    category: categories[props.category],
-                                    slug: movie?.title || movie?.name,
-                                    id: movie?.id
-                                }) }
-                                className="card" key={ i } >
-                                <figure>
-                                    <img loading="lazy" src={ movieImg.w500Img(movie?.poster_path) } alt={ movie?.title || movie?.name } />
-                                    <figcaption>
-                                        { movie?.title || movie?.name }
-                                    </figcaption>
-                                </figure>
-                            </Link>
-                        )
-                    })
             }
+
         </div >
     )
 }

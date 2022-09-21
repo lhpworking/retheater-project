@@ -9,21 +9,62 @@
 
     &>ul {
         display: flex;
-        gap: 3rem;
+        align-items: center;
+        gap: 2rem;
 
         &>li {
-            color: $light-color;
-            transition: color .2s ease-in-out;
-            will-change: color;
+            display: flex;
+            height: 100%;
+
+            &.prev,
+            &.next {
+                &>a {
+                    display: flex;
+                    align-items: center;
+                    padding: 2px 8px;
+                    border-radius: 2px;
+                    border: 1px solid $brand-color;
+                    color: $brand-color;
+                    opacity: 1;
+
+                    &:hover {
+                        opacity: .8;
+                        transition: opacity .2s ease-in-out;
+                        will-change: opacity;
+                    }
+
+                    &>svg {
+                        fill: $brand-color;
+                    }
+                }
+
+            }
+
+            &>a {
+                color: $light-color;
+            }
 
             &.active {
-                color: $brand-color;
+                &>a {
+                    padding: 2px 8px;
+                    border-radius: 2px;
+                    border: 1px solid $brand-color;
+                    color: $brand-color;
+                    opacity: 1;
+                    color: $brand-color;
+                    transition: color .2s ease-in-out;
+                    will-change: color;
+                }
             }
 
             &:hover {
                 color: $brand-color;
                 cursor: pointer;
+                transition: color .2s ease-in-out;
+                will-change: color;
             }
+
+
         }
     }
 }
