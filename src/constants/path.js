@@ -1,4 +1,5 @@
 export const HOME_PATH = "/";
+export const SEARCH_PAGE_PATH = "/search"
 
 export const SEARCH_PATH = "/:category/search/:keyword";
 

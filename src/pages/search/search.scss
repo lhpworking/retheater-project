@@ -1,0 +1,21 @@
+@use '/src/assets/scss/core/variables' as *;
+
+.search {
+    &__block {
+        margin-bottom: 5rem;
+
+        &>input {
+            width: 100%;
+            outline: none;
+            border: 0;
+            padding: 10px 20px;
+            font-size: 2rem;
+        }
+    }
+
+    .card-layout {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 3rem;
+    }
+}

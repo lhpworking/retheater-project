@@ -22,8 +22,9 @@ export const movieServices = {
     const url = "/person/" + id;
     return api.get(url, { params: {} });
   },
-  getSearch: (category, params) => {
-    const url = "search/" + categories[category];
+  getSearch: (query = '', params) => {
+    const url = "search/multi" + query;
+    return api.get(url, { params: {} })
   },
   getDetails: (category, id) => {
     const url = categories[category] + "/" + id;

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { HOME_PATH } from "../../constants/path";
-import Button from "../button/Button";
+import { HOME_PATH, SEARCH_PAGE_PATH } from "../../constants/path";
 import './header.scss';
 
 export default function Header() {
@@ -19,7 +18,7 @@ export default function Header() {
                     <img src="/logo.png" alt="logo" />
                 </Link>
                 <div className="auth">
-                    <Link to={ "" } className="search">
+                    <Link to={ SEARCH_PAGE_PATH } className="search">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"

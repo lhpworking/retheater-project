@@ -4,8 +4,10 @@ import {
   HOME_PATH,
   MOVIE_CATALOG_PATH,
   MOVIE_DETAIL_PATH,
-  MOVIE_PATH
+  MOVIE_PATH,
+  SEARCH_PAGE_PATH
 } from "./constants/path";
+import SearchPage from "./pages/search/SearchPage";
 // import MainLayout from "./layouts/MainLayout";
 // import Home from "./pages";
 // import Catalog from "./pages/movie";
@@ -26,6 +28,7 @@ function App() {
             <Route index path={ MOVIE_CATALOG_PATH } element={ <Catalog /> } />
             <Route path={ MOVIE_DETAIL_PATH } element={ <Detail /> } />
           </Route>
+          <Route path={ SEARCH_PAGE_PATH } element={ <SearchPage /> } />
         </Route>
       </Routes>
     </Suspense>

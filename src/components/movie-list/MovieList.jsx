@@ -13,8 +13,9 @@ const MovieList = props => {
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(false)
 
-    useEffect(() => {
 
+
+    useEffect(() => {
         const getList = async () => {
             setLoading(true)
             let response = null
@@ -23,6 +24,7 @@ const MovieList = props => {
             if (props.type !== "similar") {
                 switch (props.category) {
                     case categories.movie:
+
                         if (props.time) {
                             response = await movieServices.getTrending(props.category, props.time)
                             setData(response.results.slice(0, props.sliceNum))
@@ -37,7 +39,6 @@ const MovieList = props => {
                         if (props.type === movieType.upcoming) setData(response.results.slice(0, props.sliceNum))
                         setLoading(false)
                         break;
-
                     default:
                         response = await movieServices.getTVShows(props.type, { params })
                         setData(response.results.slice(0, props.sliceNum))
@@ -48,10 +49,11 @@ const MovieList = props => {
                 setData(response.results)
                 setLoading(false)
             }
+
         }
         getList()
     }, [])
-
+    console.log(loading);
 
     return (
         <div className="card-layout">
@@ -61,8 +63,8 @@ const MovieList = props => {
                         <SkeletonImage active style={ { marginBottom: "1rem", width: 200, height: 300 } } />
                         <SkeletonInput size='small' />
                     </div>
-                }) :
-                    data && data.map((movie, i) => {
+                })
+                    : data && data.map((movie, i) => {
                         return (
                             <Link
                                 to={ generatePath(MOVIE_DETAIL_PATH, {
